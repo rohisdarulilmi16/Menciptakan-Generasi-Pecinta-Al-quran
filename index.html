@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website ROHIS SMAN 16 PADANG</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --hijau-islami: #1b5e20;
+            --hijau-terang: #2e7d32;
+            --aksen-emas: #ffd700;
+            --merah-aksen: #d32f2f;
+        }
+
+        /* Smooth Scroll & Font */
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            text-align: center;
+            padding: 25px 10px;
+            border-bottom: 5px solid var(--hijau-islami);
+        }
+        .logo-title { color: #1976d2; font-size: 28px; font-weight: 800; margin: 0; letter-spacing: 1px; }
+        .motto { color: var(--merah-aksen); font-weight: bold; margin: 8px 0; font-size: 14px; }
+
+        /* Modern Navigation */
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li a {
+            display: block;
+            padding: 18px 25px;
+            text-decoration: none;
+            color: #444;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 10px;
+            left: 50%;
+            background: var(--hijau-islami);
+            transition: 0.3s;
+            transform: translateX(-50%);
+        }
+        nav ul li a:hover::after { width: 60%; }
+        nav ul li a:hover { color: var(--hijau-islami); }
+
+        /* Animasi Transisi Halaman */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .page-section {
+            padding: 40px 15px;
+            max-width: 1000px;
+            margin: 0 auto;
+            display: none; 
+            animation: fadeIn 0.6s ease-out;
+        }
+        #home:target, #struktur:target, #informasi:target { display: block; }
+        #home { display: block; } /* Default */
+
+        /* Container Hijau */
+        .main-frame {
+            background: linear-gradient(135deg, var(--hijau-islami), var(--hijau-terang));
+            padding: 30px 15px;
+            border-radius: 20px;
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.2);
+        }
+
+        /* Headlines */
+        .headline-bar {
+            background: white;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .headline-label { background: var(--merah-aksen); color: white; padding: 12px 25px; font-weight: bold; font-size: 13px; }
+        .headline-text { padding: 0 20px; font-style: italic; font-size: 14px; color: #555; }
+
+        /* Card Konten Keren */
+        .content-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-bottom: 35px;
+            transition: transform 0.3s ease;
+        }
+        .content-card:hover { transform: translateY(-5px); }
+
+        .photo-gallery img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 4px solid var(--aksen-emas);
+        }
+
+        .card-body { padding: 30px; }
+        .tag { padding: 4px 12px; border-radius: 20px; font-size: 10px; color: white; font-weight: bold; margin-right: 5px; }
+        .bg-blue { background: #1a237e; }
+        .bg-green { background: #1b5e20; }
+
+        h2 { font-size: 26px; color: var(--hijau-islami); margin: 15px 0; line-height: 1.3; }
+
+        /* Text Styling Informasi */
+        .info-box h3 {
+            color: var(--hijau-islami);
+            border-left: 6px solid var(--aksen-emas);
+            padding-left: 15px;
+            margin-top: 25px;
+        }
+        .info-box p, .info-box li { line-height: 1.8; color: #444; }
+
+        /* Footer & Sosmed */
+        footer {
+            background: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 5px solid var(--aksen-emas);
+        }
+        .sosmed-icons { margin: 20px 0; }
+        .sosmed-icons a {
+            font-size: 35px;
+            margin: 0 20px;
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+        .sosmed-icons a:hover { transform: scale(1.2); }
+        .fa-instagram { color: #e4405f; }
+        .fa-whatsapp { color: #25d366; }
+        .fa-facebook { color: #1877f2; }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-title">ROHIS SMAN 16 PADANG</div>
+        <div class="motto">BERIMAN, BERILMU, BERAKHLAKUL KARIMAH</div>
+        <div style="font-size: 12px; color: #666;"><i class="fa-regular fa-envelope"></i> NEWSLETTER</div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home"><i class="fa-solid fa-house"></i> HOME</a></li>
+            <li><a href="#struktur"><i class="fa-solid fa-users"></i> STRUKTUR</a></li>
+            <li><a href="#informasi"><i class="fa-solid fa-circle-info"></i> INFORMASI</a></li>
+        </ul>
+    </nav>
+
+    <div id="home" class="page-section">
+        <div class="headline-bar">
+            <div class="headline-label">TERBARU</div>
+            <div class="headline-text">Jadi Jumat berkah berbagi sesama...</div>
+        </div>
+        
+        <div class="main-frame">
+            <div class="content-card">
+                <div class="photo-gallery">
+                    <img src="WhatsApp Image 2026-01-08 at 21.30.01.jpeg" alt="Keluarga Rohis">
+                </div>
+                <div class="card-body">
+                    <span class="tag bg-blue">KEGIATAN</span>
+                    <span class="tag bg-green">PENGUMUMAN</span>
+                    <h2>Keluarga Rohis Darul Ilmi Angkatan 2024/2025</h2>
+                    <p style="color: #777; font-size: 13px;"><i class="fa-regular fa-calendar"></i> 1 Day Ago</p>
+                </div>
+                <div class="photo-gallery">
+                    <img src="WhatsApp Image 202999-01-08 at 21.30.01.jpeg" alt="Keluarga Rohis">
+                </div>
+                <div class="card-body">
+                    <span class="tag bg-blue">KEGIATAN</span>
+                    <span class="tag bg-green">PENGUMUMAN</span>
+                    
+                    <p style="color: #777; font-size: 13px;"><i class="fa-regular fa-calendar"></i> 1 Day Ago</p>
+                </div>
+                <div class="photo-gallery">
+                    <img src="WhatsApp Image 2026-01-08 at 21.53.12 (1).jpeg" alt="Keluarga Rohis">
+                </div>
+                <div class="card-body">
+                    <span class="tag bg-blue">KEGIATAN</span>
+                    <span class="tag bg-green">PENGUMUMAN</span>
+                    
+                    <p style="color: #777; font-size: 13px;"><i class="fa-regular fa-calendar"></i> 1 Day Ago</p>
+                </div>
+                <div class="photo-gallery">
+                    <img src="WhatsApp Image 2026-01-08 at 21.53.12 (2).jpeg" alt="Keluarga Rohis">
+                </div>
+                <div class="card-body">
+                    <span class="tag bg-blue">KEGIATAN</span>
+                    <span class="tag bg-green">PENGUMUMAN</span>
+                    
+                    <p style="color: #777; font-size: 13px;"><i class="fa-regular fa-calendar"></i> 1 Day Ago</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="struktur" class="page-section">
+        <h2 style="text-align: center; margin-bottom: 30px;">Kepengurusan Darul Ilmi</h2>
+        <div class="main-frame">
+            <div class="content-card"><div class="photo-gallery"><img src="WhatsApp Image 2026-01-08 at 22.47.58.jpeg" alt="Struktur 1"></div></div>
+            <div class="content-card"><div class="photo-gallery"><img src="WhatsApp Image 2026-01-08 at 22.47.57.jpeg" alt="Struktur 2"></div></div>
+            <div class="content-card"><div class="photo-gallery"><img src="WhatsApp Image 2026-01-08 at 22.47.57 (1).jpeg" alt="Struktur 3"></div></div>
+            <div class="content-card"><div class="photo-gallery"><img src="WhatsApp Image 2026-01-08 at 22.47.57 (2).jpeg" alt="Struktur 4"></div></div>
+            <div class="content-card"><div class="photo-gallery"><img src="WhatsApp Image 2026-01-08 at 22.47.58 (1).jpeg" alt="Struktur 5"></div></div>
+            <div class="content-card"><div class="photo-gallery"><img src="WhatsApp Image 2026-01-08 at 22.47.58 (2).jpeg" alt="Struktur 3"></div></div>
+            <div class="content-card"><div class="photo-gallery"><img src="WhatsApp Image 2026-01-08 at 22.47.59.jpeg" alt="Struktur 4"></div></div>
+            <div class="content-card"><div class="photo-gallery"><img src="WhatsApp Image 2026-01-08 at 22.47.59 (1).jpeg" alt="Struktur 5"></div></div>
+        </div>
+    </div>
+        </div>
+    </div>
+
+    <div id="informasi" class="page-section">
+        <div class="content-card info-box">
+            <div class="card-body">
+                <h2 style="text-align: center;">Mengenal Rohis (Rohani Islam)</h2>
+                <hr style="border: 0; border-top: 2px solid #eee; margin-bottom: 20px;">
+                
+                <p><strong>Rohis</strong> adalah organisasi intra-sekolah untuk memperdalam ilmu dan praktik keislaman melalui kegiatan pengajaran, dakwah, dan diskusi. Bertujuan membentuk siswa muslim yang beriman, bertakwa, dan berakhlak mulia. Sering disebut juga sebagai <strong>IRMA</strong> atau <strong>DKM</strong>.</p>
+                
+                <h3>Tujuan Utama Rohis</h3>
+                <ul>
+                    <li><strong>Meningkatkan Keimanan:</strong> Memperkuat hubungan dengan Allah SWT.</li>
+                    <li><strong>Memperdalam Ilmu:</strong> Mempelajari ajaran Islam secara komprehensif.</li>
+                    <li><strong>Pengembangan Karakter:</strong> Menjadi teladan berakhlak mulia di sekolah.</li>
+                </ul>
+
+                <h3>Kegiatan Unggulan</h3>
+                <p>Mulai dari belajar Al-Qur'an (BTA/Tahsin), hafalan, <strong>MABIT</strong> (Malam Bina Iman dan Takwa), kajian rutin, hingga aksi sosial dan rihlah alam terbuka.</p>
+
+                <h3>Manajemen Organisasi</h3>
+                <p>Rohis dikelola secara profesional layaknya OSIS, memiliki struktur Ketua, Sekretaris, Bendahara, dan Divisi-Divisi yang mengintegrasikan ilmu dunia serta akhirat secara menyeluruh.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p style="font-weight: bold; color: var(--hijau-islami); font-size: 18px;">Silaturahmi di Media Sosial</p>
+        <div class="sosmed-icons">
+            <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://wa.me/nomoranda" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+        <div style="margin-top: 25px; color: #888; font-size: 13px;">
+            <p>&copy; 2026 Rohis Darul Ilmi SMAN 16 Padang</p>
+            <p style="color: var(--hijau-terang);">"Beriman, Berilmu, Berakhlakul Karimah"</p>
+        </div>
+    </footer>
+
+</body>
+</html>
